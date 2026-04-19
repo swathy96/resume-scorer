@@ -1,4 +1,4 @@
-import type { ScoreResponse } from "./types";
+import type { ScoreResponse } from "../model/types";
 
 export type ScoreInput =
   | { jobDescription: string; resumeText: string }
