@@ -8,7 +8,7 @@ interface InputPanelProps {
 
 type ResumeMode = "pdf" | "text";
 
-export function InputPanel({ onSubmit, disabled }: InputPanelProps) {
+function InputPanel({ onSubmit, disabled }: InputPanelProps) {
   const [jobDescription, setJobDescription] = useState("");
   const [resumeMode, setResumeMode] = useState<ResumeMode>("pdf");
   const [resumeText, setResumeText] = useState("");
@@ -104,3 +104,4 @@ export function InputPanel({ onSubmit, disabled }: InputPanelProps) {
     </form>
   );
 }
+export default InputPanel;

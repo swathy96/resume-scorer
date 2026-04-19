@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { InputPanel } from "./components/InputPanel";
+import InputPanel from "./components/InputPanel";
+import ResultsPanel from "./components/ResultsPanel";
 import { scoreResume, type ScoreInput } from "./apis/api";
 import type { ScoreResponse } from "./model/types";
 
@@ -49,9 +50,13 @@ function App() {
         {result && (
           <div>
             <button onClick={handleReset} className="reset-btn">← Score another</button>
-            <pre style={{ background: "#f0f0f0", padding: "1rem", overflow: "auto" }}>
-              {JSON.stringify(result, null, 2)}
-            </pre>
+            <ResultsPanel result={result} />
+            <details style={{ marginTop: "2rem" }}>
+              <summary style={{ cursor: "pointer", color: "#888" }}>View raw JSON</summary>
+              <pre style={{ background: "#f0f0f0", padding: "1rem", overflow: "auto" }}>
+                {JSON.stringify(result, null, 2)}
+              </pre>
+            </details>
           </div>
         )}
 

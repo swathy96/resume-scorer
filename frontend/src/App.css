@@ -129,3 +129,117 @@ header .tagline {
   font-size: 0.9rem;
   margin-bottom: 1rem;
 }
+
+.results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+.hero-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.hero-score .score-number {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #1a1a1a;
+}
+
+.hero-score .score-label {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.25rem;
+}
+
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.verdict-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.pill-strong_fit {
+  background: #d4f4dd;
+  color: #1a7a3e;
+}
+
+.pill-moderate_fit {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.pill-weak_fit {
+  background: #fde2d4;
+  color: #aa4a1a;
+}
+
+.pill-not_a_fit {
+  background: #fadbd8;
+  color: #a93226;
+}
+
+.apply-badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1;
+  border: 1px solid;
+}
+
+.apply-badge.apply-yes {
+  background: #fff;
+  border-color: #1a7a3e;
+  color: #1a7a3e;
+}
+
+.apply-badge.apply-no {
+  background: #fff;
+  border-color: #999;
+  color: #666;
+}
+
+.hero-summary {
+  margin: 0;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.apply-reason {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
