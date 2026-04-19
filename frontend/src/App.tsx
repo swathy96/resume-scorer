@@ -1,20 +1,19 @@
 import { useState } from "react";
-import { scoreResume } from "./apis/api";
+import { InputPanel } from "./components/InputPanel";
+import { scoreResume, type ScoreInput } from "./apis/api";
 import type { ScoreResponse } from "./model/types";
 
 function App() {
   const [result, setResult] = useState<ScoreResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  async function handleTest() {
+  async function handleSubmit(input: ScoreInput) {
     setLoading(true);
     setError(null);
+    setResult(null);
     try {
-      const data = await scoreResume({
-        jobDescription: "Senior Backend Engineer, 5+ years Java, Spring Boot, Kafka, AWS, distributed systems, PostgreSQL, Docker. Fintech a plus.",
-        resumeText: "Swathy Dakshinamoorthy. Senior Software Engineer at Discover Financial Services for 5 years. Built Java Spring Boot microservices on AWS processing 10K TPS. Led security initiative remediating 150+ vulnerabilities. Stack: Java, Spring Boot, Kafka, PostgreSQL, Redis, Docker, Kubernetes, AWS. Previously at Thoughtworks. MS Computer Science USC."
-      });
+      const data = await scoreResume(input);
       setResult(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error");
@@ -23,20 +22,44 @@ function App() {
     }
   }
 
+  function handleReset() {
+    setResult(null);
+    setError(null);
+  }
+
   return (
     <div className="app">
       <header>
         <h1>Resume Fit Scorer</h1>
+        <p className="tagline">AI-powered resume scoring against a job description</p>
       </header>
+
       <main>
-        <button onClick={handleTest} disabled={loading}>
-          {loading ? "Scoring..." : "Run test"}
-        </button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {!result && !loading && (
+          <InputPanel onSubmit={handleSubmit} disabled={false} />
+        )}
+
+        {loading && (
+          <div className="loading">
+            <p>Scoring your resume...</p>
+            <p className="subtext">This takes 30-90 seconds. Claude is analyzing the full document.</p>
+          </div>
+        )}
+
         {result && (
-          <pre style={{ background: "#f0f0f0", padding: "1rem", overflow: "auto" }}>
-            {JSON.stringify(result, null, 2)}
-          </pre>
+          <div>
+            <button onClick={handleReset} className="reset-btn">← Score another</button>
+            <pre style={{ background: "#f0f0f0", padding: "1rem", overflow: "auto" }}>
+              {JSON.stringify(result, null, 2)}
+            </pre>
+          </div>
+        )}
+
+        {error && !loading && (
+          <div className="error-panel">
+            <p>Error: {error}</p>
+            <button onClick={handleReset}>Try again</button>
+          </div>
         )}
       </main>
     </div>
