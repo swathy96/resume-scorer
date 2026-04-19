@@ -18,7 +18,7 @@ const upload = multer({
 
 router.post("/score", upload.single("resume"), async (req: Request, res: Response) => {
   try {
-    const { jobDescription } = req.body;
+    const jobDescription = req.body?.jobDescription;
 
     if (!jobDescription || typeof jobDescription !== "string") {
       return res.status(400).json({ error: "jobDescription is required" });
@@ -35,7 +35,7 @@ router.post("/score", upload.single("resume"), async (req: Request, res: Respons
       return res.json(result);
     }
 
-    const { resumeText } = req.body;
+    const resumeText  = req.body?.resumeText;
     if (!resumeText || typeof resumeText !== "string") {
       return res.status(400).json({ error: "Either a resume PDF or resumeText is required" });
     }
