@@ -7,7 +7,7 @@ const client = new Anthropic({
 });
 
 const MODEL = "claude-sonnet-4-5";
-const MAX_TOKENS = 4096;
+const MAX_TOKENS = 8196;
 
 export type ScoreInput =
   | { jobDescription: string; resumeText: string }
@@ -52,6 +52,12 @@ export async function scoreResume(input: ScoreInput): Promise<ScoreResponse> {
     messages: [{ role: "user", content: messageContent }],
   });
 
+  if (response.stop_reason === "max_tokens") {
+  throw new Error(
+    "Claude response was truncated. Try a shorter resume or JD, or increase MAX_TOKENS."
+  );
+}
+
   const textBlock = response.content.find((b) => b.type === "text");
   if (!textBlock || textBlock.type !== "text") {
     throw new Error("Claude returned no text content");
@@ -69,7 +75,8 @@ export async function scoreResume(input: ScoreInput): Promise<ScoreResponse> {
 
   const validation = ScoreResponseSchema.safeParse(parsed);
   if (!validation.success) {
-    console.error("Zod validation failed:", validation.error.format());
+    console.error("Zod validation failed:", JSON.stringify(validation.error.format(), null, 2));
+    console.error("Claude returned:", JSON.stringify(parsed, null, 2).slice(0, 3000));
     throw new Error("Claude response did not match schema");
   }
 
