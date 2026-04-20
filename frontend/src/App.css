@@ -243,3 +243,172 @@ header .tagline {
   color: #666;
   font-style: italic;
 }
+
+.category-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.category-header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.score-badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.score-high {
+  background: #d4f4dd;
+  color: #1a7a3e;
+}
+
+.score-mid {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.score-low {
+  background: #fde2d4;
+  color: #aa4a1a;
+}
+
+.score-weak {
+  background: #fadbd8;
+  color: #a93226;
+}
+
+.category-summary {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.subsection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.subsection h3 {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  border: 1px solid;
+}
+
+.tag-positive {
+  background: #f0faf3;
+  color: #1a7a3e;
+  border-color: #c8e6cf;
+}
+
+.tag-negative {
+  background: #fdf2f2;
+  color: #a93226;
+  border-color: #f5c6cb;
+}
+
+.tag-warning {
+  background: #fffaf0;
+  color: #856404;
+  border-color: #f5e0a0;
+}
+
+.empty-state {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #999;
+  font-style: italic;
+}
+
+.issue-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.issue-item {
+  padding: 0.75rem;
+  background: #fafafa;
+  border-radius: 6px;
+  border-left: 3px solid #ddd;
+}
+
+.issue-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
+}
+
+.issue-section {
+  font-size: 0.75rem;
+  color: #888;
+  background: #eee;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+}
+
+.issue-recommendation {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #555;
+}
+
+.severity-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.severity-high {
+  background: #c0392b;
+}
+
+.severity-medium {
+  background: #d4a017;
+}
+
+.severity-low {
+  background: #888;
+}
