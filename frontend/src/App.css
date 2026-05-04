@@ -412,3 +412,92 @@ header .tagline {
 .severity-low {
   background: #888;
 }
+
+.loading {
+  text-align: center;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.loading-icon-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #f0f7ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.loading-icon {
+  color: #1a73e8;
+  animation: fade-in 0.4s ease-out;
+}
+
+.loading-stage {
+  font-size: 1rem;
+  color: #1a1a1a;
+  margin: 0;
+  font-weight: 500;
+  animation: fade-in 0.4s ease-out;
+}
+
+.loading .subtext {
+  color: #888;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.error-panel {
+  padding: 1.5rem;
+  background: #fdf2f2;
+  border: 1px solid #f5c6cb;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.error-panel h3 {
+  margin: 0 0 0.5rem;
+  color: #a93226;
+  font-size: 1.05rem;
+}
+
+.error-message {
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 0.85rem;
+  color: #6b1e15;
+  background: #fff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin: 0 0 0.75rem;
+}
+
+.error-hint {
+  color: #555;
+  font-size: 0.9rem;
+  margin: 0 0 1rem;
+}
+
+.error-retry {
+  padding: 0.5rem 1rem;
+  background: #1a1a1a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
